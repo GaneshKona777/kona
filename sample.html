@@ -1,0 +1,35 @@
+<html>
+<head></head>
+<body></body>
+
+</html>
+<script>
+function getUser1(){
+    return new Promise((resolve,reject) =>{
+         setTimeout(()=>{
+                 resolve('Marks');
+         },2000)
+    });
+}
+
+function getUser2(){
+    return new Promise((resolve,reject)=>{
+         setTimeout(()=>{
+             resolve('James')
+         },1000)
+    });
+}
+function getUser3(){
+    return new Promise((resolve,reject)=>{
+          setTimeout(()=>{
+              reject('Its rejected')
+              resolve('Peter')
+          },3000)
+    });
+}
+
+Promise.race([getUser1(),getUser2(),getUser3(0)])
+.then(Values => console.log(Values))
+.catch(err => console.log(err));
+
+</script>
